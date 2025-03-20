@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Совы и жаворонки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Совы и жаворонки</h1>
+        <p>Выберите тему:</p>
+        <button onclick="startGame('Фрукты')">Фрукты</button>
+        <button onclick="startGame('Животные')">Животные</button>
+        <button onclick="startGame('Города')">Города</button>
+    </div>
+
+    <script>
+        function startGame(topic) {
+            alert(`Вы выбрали тему: ${topic}`);
+            // Здесь можно отправить данные боту через Telegram API
+            if (window.Telegram && Telegram.WebApp) {
+                Telegram.WebApp.sendData(JSON.stringify({ topic: topic }));
+            } else {
+                console.log("Telegram WebApp не доступен.");
+            }
+        }
+    </script>
+</body>
+</html>
